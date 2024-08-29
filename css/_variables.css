@@ -1,0 +1,7 @@
+:root {
+    --fontMain: Arial, Helvetica, sans-serif;
+    --fontHeader: Garamond, 'Times New Roman', serif;
+
+    --marginMain: 1rem;
+    --marginSmall: 0.5rem;
+}
