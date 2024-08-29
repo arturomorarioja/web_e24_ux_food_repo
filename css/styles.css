@@ -13,13 +13,13 @@ body {
         text-align: center;
         padding: var(--marginSmall) var(--marginMain);
     }
-    section > header {
-        text-align: left;
-    }
-    ul {
-        margin-left: var(--marginMain);
-        li {
-            list-style-type: none;
+    section {
+        margin: var(--marginMain);
+        header {
+            text-align: left;
         }
+    }
+    ul, ol {
+        margin-left: var(--marginMain);
     }
 }
