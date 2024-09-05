@@ -22,4 +22,25 @@ body {
     ul, ol {
         margin-left: var(--marginMain);
     }
+    .standout {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    img {
+        width: 100%;
+    }
+    @media (min-width: 650px) {
+        img {
+            width: var(--recipePictureWidth);
+        }
+        .recipe-content {
+            display: flex;
+            flex-flow: row-reverse nowrap;
+        }
+    }
+    @media (min-width: 975px) {
+        img {
+            width: var(--recipePictureWidthBig);
+        }
+    }
 }

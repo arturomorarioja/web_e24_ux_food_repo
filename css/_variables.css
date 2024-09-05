@@ -4,4 +4,7 @@
 
     --marginMain: 1rem;
     --marginSmall: 0.5rem;
+
+    --recipePictureWidth: 320px;
+    --recipePictureWidthBig: 480px;
 }
