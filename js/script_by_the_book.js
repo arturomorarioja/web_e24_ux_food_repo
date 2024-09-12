@@ -19,18 +19,32 @@ const recipes = [
 const recipeInfoSection = document.querySelector('#recipe-info');
 
 recipes.forEach(function(recipe) {
+    const recipeLinkText = document.createTextNode(recipe.name);
     const recipeLink = document.createElement('a');
-    recipeLink.innerText = recipe.name;
+    recipeLink.append(recipeLinkText);
     recipeLink.setAttribute('href', '#');
 
     recipeLink.addEventListener('click', function() {
         // We empty the recipe info section
-        recipeInfoSection.innerHTML = `
-            <header>
-                <h2>${recipe.name}</h2>
-            </header>
-            <p>${recipe.description}</p>
-        `;
+        recipeInfoSection.innerHTML = '';
+
+        // We create the h2
+        const recipeH2Text = document.createTextNode(recipe.name);
+        const recipeH2 = document.createElement('h2');
+        recipeH2.append(recipeH2Text);
+
+        // We create the header wrapping the h2
+        const recipeHeader = document.createElement('header');
+        recipeHeader.append(recipeH2);
+
+        // We create the paragraph with the description
+        const recipeDescriptionText = document.createTextNode(recipe.description);
+        const recipeDescription = document.createElement('p');
+        recipeDescription.append(recipeDescriptionText);
+
+        // Both the header and the description are added to the recipe info area
+        recipeInfoSection.append(recipeHeader);
+        recipeInfoSection.append(recipeDescription);
     });
 
     const recipeListItem = document.createElement('li');
