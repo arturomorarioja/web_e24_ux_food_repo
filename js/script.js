@@ -1,6 +1,6 @@
 'use strict';
 
-const baseUrl = 'https://www.themaldb.com/api/json/v1/1';
+const baseUrl = 'https://www.themealdb.com/api/json/v1/1';
 const numRecipesToShow = 10;
 
 // We grab the container for the recipe card
