@@ -26,12 +26,24 @@ const handleRecipe = function(data) {
         `;
         for (let index = 0; index < MAX_INGREDIENTS; index++) {
             const ingredient = recipe[`strIngredient${index + 1}`];
-            if (ingredient !== '') {
+            if (ingredient !== null && ingredient !== '') {
                 const measure = recipe[`strMeasure${index + 1}`];
                 recipeInfo += `<li>${ingredient}, ${measure}</li>`;
             }
         }
         recipeInfo += '</ul>';
+        let youtubeID = recipe.strYoutube;
+        youtubeID = youtubeID.substring(youtubeID.length - 11);
+        recipeInfo += `
+            <iframe 
+                src="https://www.youtube.com/embed/${youtubeID}?si=MO0O8ATQ_yYp_1wR" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+            </iframe>
+        `;
         recipeInfoSection.innerHTML = recipeInfo;
     });
 
