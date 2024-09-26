@@ -1,7 +1,8 @@
 'use strict';
 
 const baseUrl = 'https://www.themealdb.com/api/json/v1/1';
-const numRecipesToShow = 10;
+const NUM_RECIPES_TO_SHOW = 10;
+const MAX_INGREDIENTS = 20;
 
 // We grab the container for the recipe card
 const recipeInfoSection = document.querySelector('#recipe-info');
@@ -15,12 +16,23 @@ const handleRecipe = function(data) {
 
     recipeLink.addEventListener('click', function() {
         // We empty the recipe info section
-        recipeInfoSection.innerHTML = `
+        let recipeInfo = `
             <header>
                 <h2>${recipe.strMeal}</h2>
             </header>
+            <img src="${recipe.strMealThumb}" alt="">
             <p>${recipe.strInstructions}</p>
+            <ul>
         `;
+        for (let index = 0; index < MAX_INGREDIENTS; index++) {
+            const ingredient = recipe[`strIngredient${index + 1}`];
+            if (ingredient !== '') {
+                const measure = recipe[`strMeasure${index + 1}`];
+                recipeInfo += `<li>${ingredient}, ${measure}</li>`;
+            }
+        }
+        recipeInfo += '</ul>';
+        recipeInfoSection.innerHTML = recipeInfo;
     });
 
     const recipeListItem = document.createElement('li');
@@ -36,7 +48,7 @@ const handleAPIError = function(response) {
     console.log('There was an error');
 }
 
-for (let index = 0; index < numRecipesToShow; index++) {
+for (let index = 0; index < NUM_RECIPES_TO_SHOW; index++) {
     fetch(`${baseUrl}/random.php`)
     .then(handleAPIError)
     .then(handleRecipe)
