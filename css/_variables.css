@@ -2,11 +2,19 @@
     --fontMain: Arial, Helvetica, sans-serif;
     --fontHeader: Garamond, 'Times New Roman', serif;
 
+    --colourMain: #003333;
+    --colourBgMain: floralwhite; 
+
     --colourError: red;
+    --colourBorder: lightgrey;
+    --colourFoodType: maroon;
+    --colourArea: seagreen;
 
     --marginMain: 1rem;
     --marginSmall: 0.5rem;
+    --marginTiny: 0.1rem;
 
+    --recipeThumbnailDimension: 100px;
     --recipePictureWidth: 320px;
     --recipePictureWidthBig: 480px;
 }

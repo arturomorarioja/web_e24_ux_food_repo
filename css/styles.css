@@ -7,6 +7,8 @@
 
 body {
     font-family: var(--fontMain);
+    color: var(--colourMain);
+    background-color: var(--colourBgMain);
 
     header, footer {
         font-family: var(--fontHeader);
@@ -26,12 +28,61 @@ body {
         width: 100%;
         aspect-ratio: 16 / 10;
     }
+    article {
+        margin-bottom: calc(var(--marginMain) * 2);
+    }
     .standout {
         font-size: 1.2rem;
         font-weight: bold;
     }
+    .pill {
+        padding: var(--marginTiny) var(--marginMain);
+        border-radius: var(--marginSmall);
+        color: var(--colourBgMain);
+        text-align: center;
+    }
+    .foodType {
+        background-color: var(--colourFoodType);
+    }
+    .area {
+        background-color: var(--colourArea);
+    }
     img {
         width: 100%;
+        max-width: var(--recipePictureWidth);
+        border-radius: var(--marginSmall);
+    }
+    @media (min-width: 300px) {
+        #recipe-cards {
+            display: flex;
+            flex-flow: row wrap;
+            gap: var(--marginMain);
+            article {
+                display: grid;
+                /* grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr); */
+                grid-template-areas: 
+                    "img header"
+                    "img pills";
+                
+                > header {
+                    grid-area: header;
+                }
+                > img {
+                    max-width: var(--recipeThumbnailDimension);
+                    max-height: var(--recipeThumbnailDimension);
+                    grid-area: img;
+                }
+                > div {
+                    grid-area: pills;
+                    padding: 0 var(--marginMain);
+                    > * {
+                        display: inline-block;
+                        width: auto;
+                    }
+                }
+            }
+        }
     }
     .error {
         color: var(--colourError);
