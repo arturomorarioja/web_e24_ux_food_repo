@@ -1,8 +1,6 @@
-'use strict';
+import { baseUrl, handleAPIError } from './common.js';
 
-const baseUrl = 'https://www.themealdb.com/api/json/v1/1';
 const NUM_RECIPES_TO_SHOW = 10;
-const MAX_INGREDIENTS = 20;
 
 // We grab the container for the recipe card
 const recipeInfoSection = document.querySelector('#recipe-cards');
@@ -63,13 +61,6 @@ const handleRecipe = function(data) {
 
     // const recipeListItem = document.createElement('li');
     // recipeListItem.append(recipeLink);
-}
-
-const handleAPIError = function(response) {
-    if (response.ok) {
-        return response.json();
-    }
-    console.log('There was an error');
 }
 
 for (let index = 0; index < NUM_RECIPES_TO_SHOW; index++) {
