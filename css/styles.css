@@ -68,7 +68,7 @@ body {
                 > header {
                     grid-area: header;
                 }
-                > img {
+                > a:has(img) {
                     max-width: var(--recipeThumbnailDimension);
                     max-height: var(--recipeThumbnailDimension);
                     grid-area: img;

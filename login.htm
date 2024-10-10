@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Repo</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/recipe.js" type="module"></script>
+    <script src="js/login.js" type="module"></script>
 </head>
 <body>
     <header>
@@ -18,7 +18,20 @@
         </ul>
     </nav>
     <main>
-        <section id="recipe-info">
+        <section id="login-form">
+            <form id="frmLogin">
+                <div>
+                    <label for="txtEmail">E-mail</label>
+                    <input type="text" id="txtEmail" required>
+                </div>
+                <div>
+                    <label for="txtPassword">Password</label>
+                    <input type="password" id="txtPassword" required>
+                </div>
+                <div>
+                    <input type="submit" value="Log in">
+                </div>
+            </form>
         </section>
     </main>
     <footer>
