@@ -1,4 +1,4 @@
-import { baseUserUrl, handleError } from './common.js';
+import { baseUserUrl, handleAPIResponseError } from './common.js';
 
 document.querySelector('#frmLogin').addEventListener('submit', (e) => {
     e.preventDefault();
@@ -17,11 +17,11 @@ document.querySelector('#frmLogin').addEventListener('submit', (e) => {
     .then(response => response.json())
     .then(data => {
         if (Object.keys(data).includes('user_id')) {
-            alert('Successfully logged in');
+            alert('Login was successful');
             window.location.href = 'index.html';
         } else {
-            handleError(data.error);
+            handleAPIResponseError(data.error);
         }
     })
-    .catch(handleError)
+    .catch(handleAPIResponseError);
 });

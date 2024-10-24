@@ -26,19 +26,28 @@ const handleRecipe = (data) => {
         }
     }
     recipeInfo += '</ul>';
+
     let youtubeID = recipe.strYoutube;
     youtubeID = youtubeID.substring(youtubeID.length - 11);
-    recipeInfo += `
-        <iframe 
-            src="https://www.youtube.com/embed/${youtubeID}?si=MO0O8ATQ_yYp_1wR" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
-        </iframe>
-    `;
-    recipeInfoSection.innerHTML = recipeInfo; 
+
+    const thumbnail = new Image();
+    thumbnail.src = `http://img.youtube.com/vi/${youtubeID}/mqdefault.jpg`;
+    console.log(thumbnail.src);
+    thumbnail.addEventListener('load', function() {
+        if (this.width !== 120) {
+            recipeInfo += `
+                <iframe 
+                    src="https://www.youtube.com/embed/${youtubeID}" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
+            `;
+        }
+        recipeInfoSection.innerHTML = recipeInfo; 
+    })
 };
 
 fetch(`${baseUrl}//lookup.php?i=${recipeID}`)
