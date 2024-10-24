@@ -18,6 +18,8 @@ document.querySelector('#frmLogin').addEventListener('submit', (e) => {
     .then(data => {
         if (Object.keys(data).includes('user_id')) {
             alert('Login was successful');
+
+            sessionStorage.setItem('food_repo_user_id', data.user_id);
             window.location.href = 'index.html';
         } else {
             handleAPIResponseError(data.error);

@@ -87,4 +87,7 @@ body {
     .error {
         color: var(--colourError);
     }
+    .hidden {
+        display: none;
+    }
 }
