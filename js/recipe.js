@@ -1,4 +1,4 @@
-import { baseUrl, handleAPIError } from './common.js';
+import { baseUrl, baseUserUrl, handleAPIError } from './common.js';
 
 const recipeInfoSection = document.querySelector('#recipe-info');
 
@@ -13,6 +13,8 @@ const handleRecipe = (data) => {
     let recipeInfo = `
         <header>
             <h2>${recipe.strMeal}</h2>
+            <input type="text" id="recipe-id" hidden value="${recipe.idMeal}">
+            <button>Mark as favourite</button>
         </header>
         <img src="${recipe.strMealThumb}" alt="">
         <p>${recipe.strInstructions}</p>
@@ -47,6 +49,27 @@ const handleRecipe = (data) => {
             `;
         }
         recipeInfoSection.innerHTML = recipeInfo; 
+
+        document.querySelector('#recipe-info button').addEventListener('click', (e) => {
+            e.preventDefault();
+        
+            const userID = sessionStorage.getItem('food_repo_user_id');
+        
+            const params = new URLSearchParams();
+            const recipeID = document.querySelector('#recipe-id').value;
+            params.append('recipe_id', recipeID);
+        
+            console.log(recipeID);
+        
+            fetch(`${baseUserUrl}/users/${userID}/favourites`, {
+                method: 'POST',
+                body: params
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            });
+        });
     })
 };
 
